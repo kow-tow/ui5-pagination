@@ -10,16 +10,16 @@
         </script>
     </head>
     <body>
-        <ui5-pagination-lit
+        <ui5-pagination
             id="pagination"
             totalPage="10"
             pageIndex="3"
             onChange="click"
-        ></ui5-pagination-lit>
+        ></ui5-pagination>
         <div id="id"></div>
         <script>
             const iddom = document.getElementById('id')
-            document.querySelector('ui5-pagination-lit').onChange = (e) => {
+            document.querySelector('ui5-pagination').onChange = (e) => {
                 iddom.textContent = e
             }
         </script>

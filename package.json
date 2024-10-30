@@ -2,8 +2,7 @@
   "name": "ui5-pagination",
   "private": false,
   "version": "0.0.1",
-  "main": "dist/ui5-pagination.cjs",
-  "module": "dist/ui5-pagination.js",
+  "main": "dist/ui5-pagination.js",
   "type": "module",
   "scripts": {
     "dev": "vite",
