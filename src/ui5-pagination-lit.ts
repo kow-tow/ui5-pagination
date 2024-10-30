@@ -1,6 +1,8 @@
 import { LitElement, html } from 'lit'
 import { customElement, property, state } from 'lit/decorators.js'
 import { map } from 'lit/directives/map.js';
+import '@ui5/webcomponents/dist/Button.js'
+import '@ui5/webcomponents-icons/dist/AllIcons.js'
 
 @customElement('ui5-pagination-lit')
 export class Pagination extends LitElement {
