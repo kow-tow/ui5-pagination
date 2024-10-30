@@ -1,6 +1,6 @@
 # ui5-pagination
 
-適用於目前任意 ![UI5 Web Components](./static/favicon.svg) [UI5 Web Components](https://sap.github.io/ui5-webcomponents/) 版本的分頁組件
+適用於目前任意 ![UI5 Web Components](./public/favicon.svg) [UI5 Web Components](https://sap.github.io/ui5-webcomponents/) 版本的分頁組件
 
 [![lit](https://img.shields.io/badge/lit-4c64ff.svg?style=for-the-badge&logo=lit)](https://lit.dev/)
 [![pnpm v9](https://img.shields.io/badge/maintained%20with-pnpm%209.0-cc00ff.svg?style=for-the-badge&logo=pnpm)](https://pnpm.io/)
