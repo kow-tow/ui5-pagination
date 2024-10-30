@@ -14,12 +14,12 @@
             id="pagination"
             totalPage="10"
             pageIndex="3"
-            onClick="click"
+            onChange="click"
         ></ui5-pagination-lit>
         <div id="id"></div>
         <script>
             const iddom = document.getElementById('id')
-            document.querySelector('ui5-pagination-lit').onClick = (e) => {
+            document.querySelector('ui5-pagination-lit').onChange = (e) => {
                 iddom.textContent = e
             }
         </script>
