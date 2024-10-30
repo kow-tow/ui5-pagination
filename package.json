@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsup src/index.ts --format esm --dts",
-    "preview": "vite preview"
+    "preview": "tsc && vite build --outDir preview && vite preview --outDir preview"
   },
   "peerDependencies": {
     "@ui5/webcomponents": "*",
