@@ -6,13 +6,17 @@ import { map } from 'lit/directives/map.js';
 export class Pagination extends LitElement {
   @property({ type: Number }) pageIndex: number = 0;
   @property({ type: Number }) totalPage: number = 0;
+  @property({ type: Function }) onClick = (e: number) => { return e };
   @state({})
   private prevIsDisabled = this.totalPage == 0 || this.pageIndex == 0
   @state({})
   private nextIsDisabled = this.totalPage == 0 || this.pageIndex == this.totalPage - 1
 
   private _onClick(e: Event) {
-    this.pageIndex = parseInt((e.target as HTMLElement).dataset.to!)
+    if ((e.target as HTMLElement).tagName === "UI5-BUTTON") {
+      this.onClick(parseInt((e.target as HTMLElement).dataset.to!) + 1)
+      this.pageIndex = parseInt((e.target as HTMLElement).dataset.to!)
+    }
   }
   protected render() {
     return html`

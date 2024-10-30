@@ -9,9 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@ui5/webcomponents": "^2.3.0",
-    "@ui5/webcomponents-icons": "^2.3.0",
-    "lit": "^3.2.1"
+    "@ui5/webcomponents": "*",
+    "@ui5/webcomponents-icons": "*",
+    "lit": "*"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",

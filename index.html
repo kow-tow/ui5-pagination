@@ -13,6 +13,13 @@
         </script>
     </head>
     <body>
-        <ui5-pagination-lit totalPage="10"></ui5-pagination-lit>
+        <ui5-pagination-lit id="pagination" totalPage="10" pageIndex="3" onClick="click"></ui5-pagination-lit>
+        <div id="id"></div>
+    <script>
+        const iddom = document.getElementById('id')
+        document.querySelector('ui5-pagination-lit').onClick=(e)=>{
+            iddom.textContent=e
+        }
+    </script>
     </body>
 </html>
