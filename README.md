@@ -53,11 +53,13 @@ pnpm i ui5-pagination
 ></ui5-pagination>
 
 <script type="module">
-document
-    .querySelector('ui5-pagination')
-    .addEventListener("change", (page) => {
-        console.log(page)
-    })
+const pagination = document.querySelector('ui5-pagination')
+pagination.addEventListener("pagination-click", (e) => {
+    console.log(e.detail)
+})
+pagination.onClick=(index)=>{
+    console.log(index)
+}
 </script>
 ```
 

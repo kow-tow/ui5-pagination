@@ -18,9 +18,18 @@ export class Pagination extends LitElement {
         this.totalPage == 0 || this.pageIndex == this.totalPage - 1
 
     private onClick(e: Event) {
-        if ((e.target as HTMLElement).tagName === 'UI5-BUTTON') {
-            this.onChange(parseInt((e.target as HTMLElement).dataset.to!) + 1)
-            this.pageIndex = parseInt((e.target as HTMLElement).dataset.to!)
+        if(e===null){
+            return
+        }
+        const target = e.target as HTMLElement
+        if (target.tagName === 'UI5-BUTTON') {
+            target.parentElement?.dispatchEvent(new CustomEvent('pagination-click',{
+                bubbles:true,
+                composed:true,
+                detail:parseInt(target.dataset.to!)+1
+            }))
+            this.onChange(parseInt(target.dataset.to!) + 1)
+            this.pageIndex = parseInt(target.dataset.to!)
         }
     }
     protected render() {

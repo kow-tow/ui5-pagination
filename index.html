@@ -10,17 +10,55 @@
         </script>
     </head>
     <body>
-        <ui5-pagination
-            id="pagination"
-            totalPage="10"
-            pageIndex="3"
-            onChange="click"
-        ></ui5-pagination>
-        <div id="id"></div>
+        <div
+            style="
+                display: flex;
+                flex-direction: column;
+                gap: 36px;
+                justify-content: center;
+            "
+        >
+            <ui5-pagination id="pagination1"></ui5-pagination>
+            <div id="dom1">0</div>
+            <ui5-pagination id="pagination2" totalPage="1"></ui5-pagination>
+            <div id="dom2">0</div>
+            <ui5-pagination id="pagination3" totalPage="10"></ui5-pagination>
+            <div id="dom3">0</div>
+            <ui5-pagination id="pagination4" totalPage="36"></ui5-pagination>
+            <div id="dom4">0</div>
+        </div>
         <script>
-            const iddom = document.getElementById('id')
-            document.querySelector('ui5-pagination').onChange = (e) => {
-                iddom.textContent = e
+            const dom1 = document.getElementById('dom1')
+            const dom2 = document.getElementById('dom2')
+            const dom3 = document.getElementById('dom3')
+            const dom4 = document.getElementById('dom4')
+            const pagination1 = document.getElementById('pagination1')
+            const pagination2 = document.getElementById('pagination2')
+            const pagination3 = document.getElementById('pagination3')
+            const pagination4 = document.getElementById('pagination4')
+            pagination1.addEventListener('pagination-click', (e) => {
+                console.log('pagination1更改为', e.detail)
+            })
+            pagination1.onChange = (e) => {
+                dom1.textContent = e
+            }
+            pagination2.addEventListener('pagination-click', (e) => {
+                console.log('pagination2更改为', e.detail)
+            })
+            pagination2.onChange = (e) => {
+                dom2.textContent = e
+            }
+            pagination3.addEventListener('pagination-click', (e) => {
+                console.log('pagination3更改为', e.detail)
+            })
+            pagination3.onChange = (e) => {
+                dom3.textContent = e
+            }
+            pagination4.addEventListener('pagination-click', (e) => {
+                console.log('pagination4更改为', e.detail)
+            })
+            pagination4.onChange = (e) => {
+                dom4.textContent = e
             }
         </script>
     </body>
