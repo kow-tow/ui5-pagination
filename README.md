@@ -22,7 +22,7 @@ pnpm i ui5-pagination
     "imports": {
         "@ui5/webcomponents-icons/AllIcons.js": "https://ga.jspm.io/npm:@ui5/webcomponents-icons@2.3.0/dist/AllIcons.js",
         "@ui5/webcomponents/dist/Button.js": "https://ga.jspm.io/npm:@ui5/webcomponents@2.3.0/dist/Button.js",
-        "ui5-pagination": "https://ga.jspm.io/npm:ui5-pagination@0.0.3/dist/index.js"
+        "ui5-pagination": "https://ga.jspm.io/npm:ui5-pagination@0.0.4/dist/index.js"
     },
     "scopes": {
         "https://ga.jspm.io/": {
@@ -53,15 +53,11 @@ pnpm i ui5-pagination
 ></ui5-pagination>
 
 <script type="module">
-    
-const pagination = document.querySelector('ui5-pagination')
-
-pagination.addEventListener("pagination-click", (e) => {
-    console.log(e.detail)
-})
-
-pagination.onChange = (i) => console.log(i)
-
+    const pagination = document.querySelector('ui5-pagination')
+    pagination.addEventListener("pagination-click", (e) => {
+        console.log(e.detail)
+    })
+    pagination.onChange = (i) => console.log(i)
 </script>
 ```
 
@@ -70,6 +66,7 @@ pagination.onChange = (i) => console.log(i)
 如果你想貢獻代碼或者二次開發
 
 ```shell
+# 安裝
 pnpm i
 # 調試
 pnpm dev

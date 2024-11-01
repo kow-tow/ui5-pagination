@@ -6,20 +6,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>ui5-pagination</title>
         <script type="module">
-            import '/src'
+            import '@ui5/webcomponents-icons/AllIcons.js'
+            import '@ui5/webcomponents/dist/Button.js'
         </script>
+        <script type="module" src="/src"></script>
     </head>
+
     <body>
-        <div
-            style="
-                display: flex;
-                flex-direction: column;
-                gap: 36px;
-                justify-content: center;
-            "
-        >
+        <div style="display: grid; gap: 36px">
             <ui5-pagination></ui5-pagination>
             <ui5-pagination totalPage="1"></ui5-pagination>
+            <ui5-pagination totalPage="4"></ui5-pagination>
+            <ui5-pagination totalPage="7"></ui5-pagination>
             <ui5-pagination totalPage="10"></ui5-pagination>
             <ui5-pagination totalPage="36"></ui5-pagination>
         </div>
