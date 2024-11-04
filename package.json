@@ -1,8 +1,9 @@
 {
   "name": "ui5-pagination",
-  "version": "0.0.4",
-  "main": "dist/index.js",
+  "version": "0.0.5",
+  "main": "./dist/index.js",
   "type": "module",
+  "files": ["dist/*.js"],
   "scripts": {
     "dev": "vite",
     "build": "tsup src/index.ts --format esm --dts",
