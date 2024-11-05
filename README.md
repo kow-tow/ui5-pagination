@@ -18,21 +18,21 @@ pnpm i ui5-pagination
 
 ```html
 <script type="importmap">
-{
-    "imports": {
-        "@ui5/webcomponents-icons/AllIcons.js": "https://ga.jspm.io/npm:@ui5/webcomponents-icons@2.3.0/dist/AllIcons.js",
-        "@ui5/webcomponents/dist/Button.js": "https://ga.jspm.io/npm:@ui5/webcomponents@2.3.0/dist/Button.js",
-        "ui5-pagination": "https://ga.jspm.io/npm:ui5-pagination@0.0.6/dist/index.js"
-    },
-    "scopes": {
-        "https://ga.jspm.io/": {
-            "@ui5/webcomponents-base/dist/": "https://ga.jspm.io/npm:@ui5/webcomponents-base@2.3.0/dist/",
-            "@ui5/webcomponents-theming/dist/generated/themes/sap_horizon/parameters-bundle.css.js": "https://ga.jspm.io/npm:@ui5/webcomponents-theming@2.3.0/dist/generated/themes/sap_horizon/parameters-bundle.css.js",
-            "lit-html": "https://ga.jspm.io/npm:lit-html@2.8.0/development/lit-html.js",
-            "lit-html/": "https://ga.jspm.io/npm:lit-html@2.8.0/development/"
+    {
+        "imports": {
+            "@ui5/webcomponents-icons/AllIcons.js": "https://ga.jspm.io/npm:@ui5/webcomponents-icons@2.3.0/dist/AllIcons.js",
+            "@ui5/webcomponents/dist/Button.js": "https://ga.jspm.io/npm:@ui5/webcomponents@2.3.0/dist/Button.js",
+            "ui5-pagination": "https://ga.jspm.io/npm:ui5-pagination@0.0.6/dist/index.js"
+        },
+        "scopes": {
+            "https://ga.jspm.io/": {
+                "@ui5/webcomponents-base/dist/": "https://ga.jspm.io/npm:@ui5/webcomponents-base@2.3.0/dist/",
+                "@ui5/webcomponents-theming/dist/generated/themes/sap_horizon/parameters-bundle.css.js": "https://ga.jspm.io/npm:@ui5/webcomponents-theming@2.3.0/dist/generated/themes/sap_horizon/parameters-bundle.css.js",
+                "lit-html": "https://ga.jspm.io/npm:lit-html@2.8.0/development/lit-html.js",
+                "lit-html/": "https://ga.jspm.io/npm:lit-html@2.8.0/development/"
+            }
         }
     }
-}
 </script>
 ```
 
@@ -42,19 +42,16 @@ pnpm i ui5-pagination
 
 ```html
 <script type="module">
-    import "@ui5/webcomponents-icons/AllIcons.js"
-    import "@ui5/webcomponents/dist/Button.js"
-    import "ui5-pagination"
+    import '@ui5/webcomponents-icons/AllIcons.js'
+    import '@ui5/webcomponents/dist/Button.js'
+    import 'ui5-pagination'
 </script>
 
-<ui5-pagination
-    totalPage="10"
-    pageIndex="3"
-></ui5-pagination>
+<ui5-pagination totalPage="10" pageIndex="3"></ui5-pagination>
 
 <script type="module">
     const pagination = document.querySelector('ui5-pagination')
-    pagination.addEventListener("pagination-click", (e) => {
+    pagination.addEventListener('pagination-click', (e) => {
         console.log(e.detail)
     })
     pagination.onChange = (i) => console.log(i)
