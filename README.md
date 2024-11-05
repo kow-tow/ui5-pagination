@@ -46,15 +46,19 @@ pnpm i ui5-pagination
     import '@ui5/webcomponents/dist/Button.js'
     import 'ui5-pagination'
 </script>
-
-<ui5-pagination totalPage="10" pageIndex="3"></ui5-pagination>
-
+<!-- current 從1開始 ；index 從0開始 -->
+<ui5-pagination total="10" current="4"></ui5-pagination>
+<ui5-pagination total="10" index="3"></ui5-pagination>
 <script type="module">
     const pagination = document.querySelector('ui5-pagination')
-    pagination.addEventListener('page-to', (e) => {
-        console.log(e.detail)
-    })
-    pagination.onChange = (i) => console.log(i)
+    /**
+     * 事件獲取的都是 pageNumber；
+     * `this.current = e.detail` 是這個事件的默認行爲
+     */
+    pagination.addEventListener('page-to', (e) =>
+        console.log(`number: ${e.detail}`),
+    )
+    pagination.onChange = (n) => console.log(n)
 </script>
 ```
 
