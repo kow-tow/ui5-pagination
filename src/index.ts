@@ -4,14 +4,14 @@ import { map } from 'lit/directives/map.js'
 
 @customElement('ui5-pagination')
 export class Pagination extends LitElement {
-    @property({ type: Number }) pageIndex: number = 0
-    @property({ type: Number }) totalPage: number = 0
+    @property({ type: Number }) current: number = 0
+    @property({ type: Number }) total: number = 0
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     @property({ type: Function }) onChange = (_i: number) => {}
     @state({})
     pages: Array<number> = []
     @state({})
-    current = 1
+    _current = 1
     private onClick(e: PointerEvent | MouseEvent) {
         const target = e.target as HTMLElement | null
         if (target?.tagName === 'UI5-BUTTON') {
@@ -26,21 +26,21 @@ export class Pagination extends LitElement {
                     }),
                 )
             )
-                this.onChange?.((this.current = to))
+                this.onChange?.((this._current = to))
         }
     }
 
     protected firstUpdated(changed: PropertyValues): void {
-        if (changed.has('totalPage')) {
-            this.pages = Array.from({ length: this.totalPage }, (_, i) => i + 1)
+        if (changed.has('total')) {
+            this.pages = Array.from({ length: this.total }, (_, i) => i + 1)
         }
-        if (changed.has('pageIndex')) {
-            if (this.pageIndex !== 0) this.current = this.pageIndex
+        if (changed.has('current')) {
+            if (this.current !== 0) this._current = this.current
         }
     }
     protected updated(changed: PropertyValues): void {
         if (changed.has('current')) {
-            this.pageIndex = this.current - 1
+            this.current = this._current - 1
         }
     }
 
@@ -53,26 +53,26 @@ export class Pagination extends LitElement {
             <ui5-button
                 design="Emphasized"
                 icon="navigation-left-arrow"
-                ?disabled="${this.totalPage == 0 || this.pageIndex == 0}"
-                data-to=${this.current - 1}
+                ?disabled="${this.total == 0 || this.current == 0}"
+                data-to=${this._current - 1}
             ></ui5-button>
             ${map(this.pages, (p) => {
-                if (p === this.current)
+                if (p === this._current)
                     return html`<ui5-button design="Emphasized" disabled>
                         ${p}
                     </ui5-button>`
                 if (
-                    this.totalPage < 8 ||
-                    Math.abs(p - this.current) <
+                    this.total < 8 ||
+                    Math.abs(p - this._current) <
                         Math.max(
-                            this.pages.at(5)! - this.current,
-                            this.current - this.pages.at(-6)!,
+                            this.pages.at(5)! - this._current,
+                            this._current - this.pages.at(-6)!,
                             2,
                         ) ||
                     (p == this.pages.at(1) &&
-                        this.current == this.pages.at(3)) ||
+                        this._current == this.pages.at(3)) ||
                     (p == this.pages.at(-2) &&
-                        this.current == this.pages.at(-4))
+                        this._current == this.pages.at(-4))
                 )
                     return html` <ui5-button design="Default" data-to="${p}">
                         ${p}
@@ -98,9 +98,8 @@ export class Pagination extends LitElement {
             <ui5-button
                 design="Emphasized"
                 icon="navigation-right-arrow"
-                ?disabled="${this.totalPage == 0 ||
-                this.current == this.totalPage}"
-                data-to=${this.current + 1}
+                ?disabled="${this.total == 0 || this._current == this.total}"
+                data-to=${this._current + 1}
             ></ui5-button>
         </span>`
     }
