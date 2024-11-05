@@ -4,8 +4,8 @@
     "main": "./dist/index.js",
     "type": "module",
     "files": [
-        "dist/*.js",
-        "dist/*.d.ts"
+        "dist",
+        "src"
     ],
     "scripts": {
         "dev": "vite",
