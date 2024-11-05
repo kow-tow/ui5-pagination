@@ -1,6 +1,6 @@
 {
     "name": "ui5-pagination",
-    "version": "0.1.2",
+    "version": "0.2.0",
     "main": "./dist/index.js",
     "type": "module",
     "files": [

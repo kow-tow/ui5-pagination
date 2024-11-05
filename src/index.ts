@@ -4,12 +4,14 @@ import { map } from 'lit/directives/map.js'
 
 @customElement('ui5-pagination')
 export class Pagination extends LitElement {
+    @property({ type: Number }) index: number = NaN
     @property({ type: Number }) current: number = NaN
     @property({ type: Number }) total: number = NaN
-    @property({ type: Number }) index: number = NaN
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    @property({ type: Function }) onChange = (_i: number) => {}
-    @state({}) pages: Array<number> = []
+    @property({ type: Function }) onChange:
+        | ((current: number) => void | Promise<void>)
+        | undefined
+        | null = () => {}
+    @state() pages: Array<number> = []
     private onClick(e: PointerEvent | MouseEvent) {
         const target = e.target as HTMLElement | null
         if (target?.tagName === 'UI5-BUTTON') {
@@ -28,29 +30,16 @@ export class Pagination extends LitElement {
         }
     }
 
-    protected firstUpdated(changed: PropertyValues): void {
-        if (changed.has('total')) {
+    protected updated(changed: PropertyValues) {
+        if (changed.has('total'))
             this.pages = Array.from({ length: this.total }, (_, i) => i + 1)
-        }
-        if (changed.has('current')) {
-            if (this.current !== 0) this.index = this.current - 1
-        }
-        if (changed.has('index')) {
-            if (this.index !== 0) this.current = this.index + 1
-        }
-        if (
-            changed.has('current') &&
-            changed.has('index') &&
-            this.current !== this.index - 1
-        ) {
-            console.error('不合法的current和index输入')
-            this.index = 0
-            this.current = 1
-        }
-    }
-    protected updated(changed: PropertyValues): void {
-        if (changed.has('current')) {
-            this.index = this.current - 1
+        if (changed.has('index')) this.current ||= this.index + 1 || 1
+        if (changed.has('current')) this.index ||= this.current - 1 || 0
+        if (changed.has('index') && changed.has('current')) {
+            if (this.current !== this.index + 1) {
+                console.error('不合法的current或index输入')
+                ;[this.index, this.current] = [0, 1]
+            }
         }
     }
 
@@ -63,7 +52,7 @@ export class Pagination extends LitElement {
             <ui5-button
                 design="Emphasized"
                 icon="navigation-left-arrow"
-                ?disabled="${Object.is(this.total, NaN) || this.current === 1}"
+                ?disabled="${!this.total || this.current == 1}"
                 data-to=${this.current - 1}
             ></ui5-button>
             ${map(this.pages, (p) => {
@@ -108,8 +97,7 @@ export class Pagination extends LitElement {
             <ui5-button
                 design="Emphasized"
                 icon="navigation-right-arrow"
-                ?disabled="${Object.is(this.total, NaN) ||
-                this.current === this.total}"
+                ?disabled="${!this.total || this.current == this.total}"
                 data-to=${this.current + 1}
             ></ui5-button>
         </span>`
