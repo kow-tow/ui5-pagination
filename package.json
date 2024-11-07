@@ -1,16 +1,22 @@
 {
     "name": "ui5-pagination",
-    "version": "0.2.1",
+    "version": "0.2.2",
     "main": "./dist/index.js",
     "type": "module",
     "files": [
         "dist",
         "src"
     ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/kow-tow/ui5-pagination.git"
+    },
+    "homepage": "https://kow-tow.github.io/ui5-pagination/",
     "scripts": {
         "dev": "vite",
-        "build": "tsup src/index.ts --format esm --dts",
-        "preview": "tsc && vite build --outDir preview && vite preview --outDir preview",
+        "build": "tsup src/index.ts --format esm --dts --clean",
+        "preview": "vite build && vite preview",
+        "build:gh-pages": "vite build --base /ui5-pagination/",
         "prettier": "prettier --write \"**/*.{js,ts,json,tsx,css,less,scss,vue,html,md}\""
     },
     "peerDependencies": {
