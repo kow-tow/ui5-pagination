@@ -10,7 +10,7 @@
 
 ### lit
 
-作爲對等套件，也可以不安裝，按下面的操作來提升 `@ui5/webcomponents>lit`
+作爲對等套件，按下面的操作來提升 `@ui5/webcomponents>lit`
 
 先指認版本
 
@@ -18,12 +18,14 @@
 // package.json
 "pnpm": {
     "overrides": {
-        "lit": "$@ui5/webcomponents"
+        // 先看看目前ui5wc套用的lit版本吧 以後若是lit@3.x就不需要了
+        // "lit": "$lit" // 如果顯示安裝并指定版本了就這樣寫
+        "lit": "^2.8.0"
     }
 }
 ```
 
-然後提升套件版本
+套件版本提升
 
 ```ini
 # .npmrc
@@ -88,7 +90,7 @@ pnpm i ui5-pagination
 </script>
 ```
 
-雖然 ui5wc 很長一段時間一直是依賴 `lit@2.8.0`，寫成 `lit@*` 可以不必頻繁跟隨維護
+雖然 ui5wc 很長一段時間一直是依賴 `lit@2.8.0`，寫成 `lit@*` 可以不必頻繁跟隨維護發版
 
 ## 基本
 
@@ -109,13 +111,17 @@ pnpm i ui5-pagination
 <ui5-pagination total="10" index="3"></ui5-pagination>
 <script type="module">
     const pagination = document.querySelector('ui5-pagination')
-    /**
-     * 事件獲取的都是 pageNumber；
-     * `this.current = e.detail` 是這個事件的默認行爲
-     */
+
     pagination.addEventListener('page-to', (e) =>
+        // e.detail 獲取的是將要到達的 pageNumber
+        // 默認行爲： `props.onChange(this.current = e.detail)`
         console.log(`number: ${e.detail}`),
     )
+
+    /**
+     * `props.onChange` 并非事件
+     * 參數 `n` 是新的 `this.current`
+     */
     pagination.onChange = (n) => console.log(n)
 </script>
 ```

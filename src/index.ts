@@ -10,8 +10,9 @@ export class Pagination extends LitElement {
     @property({ type: Function }) onChange:
         | ((current: number) => void | Promise<void>)
         | undefined
-        | null = () => {}
+        | null = (_current: number) => {}
     @state() pages: Array<number> = []
+
     private onClick(e: PointerEvent | MouseEvent) {
         const target = e.target as HTMLElement | null
         if (target?.tagName === 'UI5-BUTTON') {
@@ -53,7 +54,7 @@ export class Pagination extends LitElement {
                 design="Emphasized"
                 icon="navigation-left-arrow"
                 ?disabled="${!this.total || this.current == 1}"
-                data-to=${this.current - 1}
+                data-to="${this.current - 1}"
             ></ui5-button>
             ${map(this.pages, (p) => {
                 if (p === this.current)
@@ -73,7 +74,7 @@ export class Pagination extends LitElement {
                     (p == this.pages.at(-2) &&
                         this.current == this.pages.at(-4))
                 )
-                    return html` <ui5-button design="Default" data-to="${p}">
+                    return html`<ui5-button design="Default" data-to="${p}">
                         ${p}
                     </ui5-button>`
 
@@ -98,7 +99,7 @@ export class Pagination extends LitElement {
                 design="Emphasized"
                 icon="navigation-right-arrow"
                 ?disabled="${!this.total || this.current == this.total}"
-                data-to=${this.current + 1}
+                data-to="${this.current + 1}"
             ></ui5-button>
         </span>`
     }
