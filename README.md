@@ -1,6 +1,6 @@
 # ui5-pagination
 
-適用於目前任意 ![UI5 Web Components](./public/favicon.svg) [UI5 Web Components](https://sap.github.io/ui5-webcomponents/) 版本（1.8+ 定 2.3+）的分頁組件
+適用於目前任意 ![UI5 Web Components](./public/favicon.svg) [UI5 Web Components](https://sap.github.io/ui5-webcomponents/) 版本（1.8+ 定 2.8+ 以下簡稱ui5wc）的分頁元件
 
 [![lit](https://img.shields.io/badge/lit-4c64ff.svg?style=for-the-badge&logo=lit)](https://lit.dev/)
 [![pnpm v9](https://img.shields.io/badge/maintained%20with-pnpm%209.0-cc00ff.svg?style=for-the-badge&logo=pnpm)](https://pnpm.io/)
@@ -10,7 +10,7 @@
 
 ### lit
 
-作爲對等依賴，也可以不安裝，按下面的操作來提升 `@ui5/webcomponents>lit`
+作爲對等套件，也可以不安裝，按下面的操作來提升 `@ui5/webcomponents>lit`
 
 先指認版本
 
@@ -23,7 +23,7 @@
 }
 ```
 
-然後提升依賴
+然後提升套件版本
 
 ```ini
 # .npmrc
@@ -31,7 +31,7 @@ hoist-pattern[] = *lit*
 public-hoist-pattern[] = *lit*
 ```
 
-以上操作再利用其他基於`lit`的框架時，或同`@ui5`的`lit`版本不一致時非常有用
+以上操作再利用其他基於`lit`的元件時非常有用
 
 ## ui5
 
@@ -45,11 +45,11 @@ pnpm i ui5-pagination
 
 ## CDN 支援
 
-雖然 ui5官網不推薦 但你依然可以透過 [`JSPM`](https://generator.jspm.io/) 來生成`importmap`
+雖然 [ui5元件官網中](https://sap.github.io/ui5-webcomponents/docs/FAQ/) 不推薦 但你依然可以透過 [`JSPM`](https://generator.jspm.io/) 來生成`importmap`
 
-使用`JSPM`會同`pnpm`一樣將`lit@*`取到最新導致同`@ui5`依賴的`lit`版本不一致，
+使用`JSPM`會同`pnpm`一樣將`lit@*`取到最新導致同 ui5wc 套用的`lit`版本不一致，
 
-所以你應該手動添加以下`importmap`字段（`@ui5` 目前依賴 `lit@2.8.0`）：
+所以你應該手動添加以下`importmap`欄位（ui5wc 目前依賴 `lit@2.8.0`）：
 
 ```diff
 <script type="importmap">
@@ -88,7 +88,7 @@ pnpm i ui5-pagination
 </script>
 ```
 
-雖然 `@ui5` 很長一段時間一直是依賴 `lit@2.8.0`，寫成 `lit@*` 可以不必頻繁跟隨維護
+雖然 ui5wc 很長一段時間一直是依賴 `lit@2.8.0`，寫成 `lit@*` 可以不必頻繁跟隨維護
 
 ## 基本
 
@@ -127,7 +127,7 @@ pnpm i ui5-pagination
 ```shell
 # 安裝
 pnpm i
-# 倘若lit版本同@ui5/webcomponents所依賴的不一致 可以强制指定
+# 倘若 lit 版本同 ui5wc 所依賴的不一致 可以强制指定
 pnpm i lit@2.8.0  --save-peer
 
 # 調試
